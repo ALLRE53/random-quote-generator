@@ -21,7 +21,8 @@ let  quotes = [
   quote: 'In prayer it is better to have a heart without words than words without a heart.',
   source: 'John Bunyan',
   citation: 'publication',
-  year: '1673'
+  year: '1673',
+
   },
 
   {
@@ -52,7 +53,7 @@ let  quotes = [
 
 ];
 
-console.log(quotes);
+//console.log(quotes);
 
 /***
   Create the `getRandomQuote` function to:
@@ -60,7 +61,7 @@ console.log(quotes);
    - Use the random number to `return` a random quote object from the `quotes` array.
 ***/
 
-function getRandomQuote(quotes) {
+function getRandomQuote() {
  
   let randomQuoteIndex = Math.floor(Math.random() * quotes.length);
   let randomQuote = quotes[randomQuoteIndex];
@@ -69,7 +70,7 @@ function getRandomQuote(quotes) {
 }
  
 
-  console.log(getRandomQuote(quotes));
+  //console.log(getRandomQuote(quotes));
 
 
   /***
@@ -91,39 +92,33 @@ function getRandomQuote(quotes) {
     let quoteObjrandom = getRandomQuote();
     let stringdefault = '';
     
-    stringdefault += '<p class = "quote">' + quotes.quote + '</p>';
-    stringdefault += '<p class = "source" >' + quotes.source;
+    stringdefault += '<p class = "quote">' + quoteObjrandom.quote + '</p>';
+    stringdefault += '<p class = "source" >' + quoteObjrandom.source;
 
-    if (quotes.citation) {
-      stringdefault += '<span class = "citation">' + quotes.citation + '</span>';
+    if (quoteObjrandom.citation) {
+      stringdefault += '<span class = "citation">' + quoteObjrandom.citation + '</span>';
 
     }
-
-      else {
-
-        stringdefault +='';
-      }
-
-      if (quotes.year) {
-        stringdefault += '<span class = "year">' + quotes.year + '</span>';
+      
+      if (quoteObjrandom.year) {
+        stringdefault += '<span class = "year">' + quoteObjrandom.year + '</span>';
       }
         
-        else {
-  
-          stringdefault +='';
-      }
+       
+   if (quoteObjrandom.tags) {
 
-   if (quotes.tags) {
-
-       stringdefault += '<h3>' + quotes.tags +'</h3>';
+       stringdefault += '<h3>' + quoteObjrandom.tags +'</h3>';
    } else {
-     message += '';
+     stringdefault += '';
 
-  } 
+
+       } 
+   stringdefault += "</p>"; 
    //print(message)
-
+console.log(stringdefault);
+document.getElementById("quote-box").innerHTML = stringdefault;
 }
-   console.log(stringdefault);
+   printQuote();
    
 
     
@@ -137,5 +132,5 @@ function getRandomQuote(quotes) {
   comment.
 ***/
 
-//document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
