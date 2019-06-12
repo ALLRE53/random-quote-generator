@@ -138,3 +138,5 @@ document.body.style.backgroundColor = randomRGB;
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
+setInterval(function(){ alert("Hello"); }, 3000);
+
