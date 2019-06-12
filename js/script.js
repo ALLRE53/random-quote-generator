@@ -117,14 +117,18 @@ function getRandomQuote() {
    //print(message)
 console.log(stringdefault);
 document.getElementById("quote-box").innerHTML = stringdefault;
+
+let r = Math.floor(Math.random() *200);
+let g = Math.floor(Math.random() *200);
+let b = Math.floor(Math.random() *200);
+let randomRGB = 'rgb('+ r + ', ' + g + ', ' + b + ')';
+document.body.style.backgroundColor = randomRGB;
+
 }
    printQuote();
    
 
     
-
-
-
 /***
   When the "Show another quote" button is clicked, the event listener 
   below will be triggered, and it will call, or "invoke", the `printQuote` 
