@@ -1,3 +1,4 @@
+
 /******************************************
 Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
@@ -34,6 +35,7 @@ let quotes = [
     source: 'Joyce Meyer'
 
   },
+
   {
     quote: 'Watch your thoughts, they become words. Watch your words, they become actions. Watch your actions, \
    they become habits. Watch your habits, they become your character. Watch your character, it becomes your destiny.',
@@ -51,8 +53,9 @@ let quotes = [
 
 /***
   Defined the `getRandomQuote` function to randomly select a quote within quotes array.
-  ramdom integer rounded down to whole number as quotes array is indexed by Zero(whole number)
-  Variable ranmdomQuote stores random array index number and returns random quote from `quotes` array.
+  ramdom integer (between 0 and 1) rounded down to whole number as quotes array is indexed
+  by Zero(whole number). Variable ranmdomQuote stores random array index number and returns 
+  random quote from `quotes` array.
 ***/
 
 function getRandomQuote() {
@@ -63,14 +66,15 @@ function getRandomQuote() {
 }
 
 /***
-   Defined `printQuote` function that calls the `getRandomQuote` function stored in quoteObjrandom
- - Defined stringdefault to hold the HTML string while setting it equal to an empty string.  Will later
-   concatenate ther default string.
- - Used the random quote variable to build the HtML string and added the quote and source properties
+   Defined `printQuote` function that calls the `getRandomQuote` function stored in quoteObjrandom.
+ - Defined stringdefault to hold the HTML string while setting it equal to an empty string.  
+   Will later concatenate the default string once if statement conditions are true during the loop
+  -Used the random quote variable to build the HtML string and added the quote and source properties
    to the string. 
- - if statement checked for the citation and year properteries before adding it to the HTML string.
+ - if statement checked for the citation and year properteries in each quote object before adding 
+   it to the HTML string.
  - Closed the final p tag once the entire HTML string was assembled with quote properties
- - Set the `innerHTML` of the `quote-box` div tag to the HTML String Var "stringdefault" to replaces 
+ - Set the `innerHTML` of the `quote-box` div tag to the HTML String Let "stringdefault" to replace 
   the id value in HTML.
 ***/
 
@@ -106,31 +110,39 @@ function printQuote() {
   
   console.log(stringdefault);
   document.getElementById("quote-box").innerHTML = stringdefault;
-
-  
-
-randomRGB();
+  randomRGB();
 
 }
+
+/*** Extra-Credit  *** Created a random function using the Math libraries 
+     random (returns a random floating deicmal) method and floor (rounds down a float to 
+     ) methods.  The returned value is than multiplied by 256 (max number of colors
+     viewable on a screen) to generate it's unique one of three
+     colors from the primary colors and stored in a variable.  The lettered color
+     variables are concatenated in a string and stored in the variable randomRGB which is also a 
+     function.  The randomRGB (New Color) variable is stored in the documents backgroundcolor 
+     property to return the new background color.  ***/   
+ 
+
 function randomRGB() {
 
-
-  let r = Math.floor(Math.random() * 200);
-  let g = Math.floor(Math.random() * 200);
-  let b = Math.floor(Math.random() * 200);
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
   let randomRGB = 'rgb(' + r + ', ' + g + ', ' + b + ')';
   document.body.style.backgroundColor = randomRGB;
 
 }
-/***auto_refresh function automatically refreshes the web page to print a new quote 
-    to the page every 20 seconds.  Initialied var fresh to store timing method and
-    passed argument function and within function invoked (function printQuote) to test 
-    a theory.***/
+/***Extra-Credit *** auto_refresh function automatically refreshes the web page every 20 seconds. 
+    Initialized let variable fresh to store timing method and
+    passed argument function for auto page refresh and the printQuote function was
+    invoked from within function to automatically and randomly print/refresh the quotes
+    to the webpage. ***/
 
-let fresh;
  function auto_refresh () {
 
- fresh = window.setInterval(function(){printQuote(); randomRGB();}, 3000);
+ let fresh; 
+ fresh = window.setInterval(function(){printQuote()}, 2000);
  console.log(fresh);
 
  }
